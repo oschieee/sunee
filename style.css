@@ -1,0 +1,373 @@
+/* General Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, #87CEEB, #1E90FF); /* Sky blue gradient */
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1); /* Slightly transparent background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 10px; /* Space between items if wrapped */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 8px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button {
+    text-decoration: none;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Main Content - Points Section & Sun */
+.relative-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative; /* Essential for absolute positioning of sun */
+}
+
+.sun-decoration {
+    position: absolute;
+    top: 50px; /* Adjust as needed */
+    right: 50px; /* Adjust as needed */
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500); /* Gold to Orange */
+    border-radius: 50%;
+    box-shadow: 0 0 40px 15px rgba(255, 215, 0, 0.7), /* Outer glow */
+                0 0 20px 5px rgba(255, 215, 0, 0.5); /* Inner glow */
+    animation: pulse 2s infinite alternate; /* Simple pulsating animation */
+    z-index: -1; /* Moved behind points - now it's truly in the background */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.05); opacity: 1; }
+}
+
+
+.clouds-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+    overflow-x: hidden; /* No horizontal scrolling needed with wrapping */
+    justify-content: center; /* Center items within each row */
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1000px; /* Adjusted max-width to help with 3-2 layout */
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    z-index: 1; /* Ensures points are in front of the sun */
+    position: relative; /* To make z-index effective */
+    padding-left: 20px; /* Add some padding on left/right for overall section */
+    padding-right: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.clouds-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+
+.cloud { /* This class now wraps the point-box */
+    flex-shrink: 0;
+    width: calc((100% / 3) - (2 * 40px / 3)); /* Adjust for gap evenly */
+    min-width: 250px; /* Minimum width to prevent items from becoming too small */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    color: #333;
+}
+
+/* Styling for the new transparent box container */
+.point-box {
+    position: relative;
+    width: 100%; /* Make point-box fill the width of its parent .cloud */
+    height: 200px; /* Increased height to accommodate title and description */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly transparent white */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    border-radius: 15px; /* Rounded corners for the box */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Keep shadow */
+    transition: transform 0.3s ease-in-out; /* Keep animation */
+    margin-bottom: 20px; /* Space between box and next element if any */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    padding: 15px; /* Added internal padding for content */
+    box-sizing: border-box; /* Include padding in width/height calculation */
+    text-align: center; /* Ensure text is centered within the box */
+}
+
+.point-box:hover { /* Apply hover effect to the box */
+    transform: translateY(-10px) scale(1.05);
+}
+
+.point-text { /* Renamed from .cloud-text */
+    font-size: 20px;
+    font-weight: 600;
+    color: #1E90FF; /* Dodger Blue */
+    margin-bottom: 5px; /* Space below the main text */
+}
+
+.point-title { /* Renamed from .cloud-title */
+    font-size: 22px; /* Adjusted size for better fit */
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px; /* Space below the title */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.point-description { /* Renamed from .cloud-description */
+    font-size: 14px; /* Adjusted size for better fit */
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 180px; /* Constrain description width within the box */
+    line-height: 1.4; /* Improve readability */
+}
+
+/* Roadmap Section (unchanged) */
+.roadmap-section {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 60px 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    text-align: center;
+}
+
+.roadmap-section h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.roadmap-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    z-index: 0;
+}
+
+.milestone {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.milestone:nth-child(even) {
+    flex-direction: row-reverse; /* Alternate sides */
+}
+
+.milestone-content {
+    width: calc(50% - 40px); /* Adjust for dot and spacing */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    position: relative;
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.milestone:nth-child(odd) .milestone-content {
+    margin-right: auto; /* Push to left */
+}
+
+.milestone:nth-child(even) .milestone-content {
+    margin-left: auto; /* Push to right */
+}
+
+.milestone-dot {
+    width: 20px;
+    height: 20px;
+    background-color: #FFD700; /* Gold */
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border: 3px solid white;
+    box-shadow: 0 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+.milestone h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #FFD700; /* Gold */
+}
+
+.milestone p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    /* Navbar buttons below logo, in one row, centered */
+    .navbar-buttons {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px; /* Space below the logo */
+    }
+
+    .sun-decoration {
+        top: 20px;
+        right: 20px;
+        width: 80px;
+        height: 80px;
+        box-shadow: 0 0 20px 8px rgba(255, 215, 0, 0.7);
+    }
+
+    .clouds-container {
+        flex-wrap: wrap; /* Allow wrapping on small screens */
+        justify-content: center; /* Center items when wrapped */
+        overflow-x: hidden; /* Disable horizontal scrolling */
+        padding-left: 0; /* Remove extra padding for smaller screens */
+        padding-right: 0;
+    }
+
+    .cloud {
+        width: calc(50% - 20px); /* Two columns on smaller screens */
+        margin-bottom: 20px; /* Add space between wrapped clouds */
+    }
+
+    /* Roadmap Section Alignment Fix */
+    .roadmap-timeline::before {
+        left: 20px; /* Keep timeline to the left */
+        transform: translateX(0);
+    }
+
+    .milestone {
+        flex-direction: column !important; /* Stack content on small screens */
+        align-items: flex-start; /* Align content to the start (left) */
+        text-align: left; /* Text aligns left within its box */
+        width: 100%; /* Take full width to accommodate aligned content */
+        margin-left: 0; /* Reset margins */
+        margin-right: 0;
+    }
+
+    .milestone-content {
+        width: calc(100% - 50px); /* Adjust width considering the line and dot space */
+        margin-left: 50px; /* Align content to the right of the line and dot */
+        margin-right: 0;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .milestone-dot {
+        left: 20px; /* Align dot with the new timeline position */
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Center the logo in the header for very small screens */
+    header {
+        align-items: center; /* This will center all direct flex children horizontally */
+    }
+
+    .cloud-title {
+        font-size: 24px;
+    }
+    .cloud-description {
+        font-size: 14px;
+    }
+    .roadmap-section h2 {
+        font-size: 30px;
+    }
+    .milestone h3 {
+        font-size: 20px;
+    }
+    .milestone p {
+        font-size: 14px;
+    }
+    .milestone-content {
+        width: calc(100% - 90px);
+    }
+    .cloud {
+        width: 90%; /* Single column, giving some margin on very small screens */
+    }
+    .point-box { /* Adjust size for mobile */
+        width: 150px;
+        height: 140px; /* Adjusted height for mobile */
+    }
+    .point-text {
+        font-size: 18px;
+    }
+}
