@@ -88,33 +88,33 @@ header {
 
 .clouds-container {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
-    overflow-x: hidden; /* No horizontal scrolling needed with wrapping */
-    justify-content: center; /* Center items within each row */
+    flex-wrap: wrap; 
+    overflow-x: hidden; 
+    justify-content: center; 
     align-items: flex-start;
     gap: 40px;
-    max-width: 1000px; /* Adjusted max-width to help with 3-2 layout */
+    max-width: 1000px; 
     width: 100%;
     margin: 0 auto;
     padding: 20px 0;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-    z-index: 1; /* Ensures points are in front of the sun */
-    position: relative; /* To make z-index effective */
-    padding-left: 20px; /* Add some padding on left/right for overall section */
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    z-index: 1; 
+    position: relative;
+    padding-left: 20px; 
     padding-right: 20px;
-    box-sizing: border-box; /* Include padding in width calculation */
+    box-sizing: border-box; 
 }
 
 .clouds-container::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
+    display: none; 
 }
 
 
 .cloud { /* This class now wraps the point-box */
     flex-shrink: 0;
-    width: calc((100% / 3) - (2 * 40px / 3)); /* Adjust for gap evenly */
-    min-width: 250px; /* Minimum width to prevent items from becoming too small */
+    width: calc((100% / 3) - (2 * 40px / 3)); 
+    min-width: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,7 +123,7 @@ header {
     color: #333;
 }
 
-/* Styling for the new transparent box container */
+
 .point-box {
     position: relative;
     width: 100%; /* Make point-box fill the width of its parent .cloud */
