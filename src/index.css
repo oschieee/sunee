@@ -133,8 +133,6 @@ main {
 .roadmap-section {
     background-color: rgba(0, 0, 0, 0.15);
     padding: 60px 20px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
     color: white;
     text-align: center;
